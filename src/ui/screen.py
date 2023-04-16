@@ -9,6 +9,7 @@ class Screen:
         self.root = Tk()
         self.root.title("Youtube Downloader")
         self.root.iconbitmap("assets/youtube.ico")
+        
         self.logo = PhotoImage(file="assets/logo.png")
         self.logo = self.logo.subsample(2, 2)
 
@@ -22,9 +23,21 @@ class Screen:
                             highlightthickness=2, font=("Roboto", 11))
         self.url.pack()
 
-        self.download_button = Button(self.root, text="Download", bg="#F9E79F", padx=5, pady=5,
+        self.v = StringVar()
+        self.v.set(" ")
+        self.radiobutton_frame = Frame(self.root)
+        self.radiobutton_frame.pack(pady=10)
+        self.video = Radiobutton(self.radiobutton_frame, variable=self.v,
+                                text="Video", value="video", borderwidth = 10)
+        self.video.grid(row=0, column=0, sticky = W)
+        self.audio = Radiobutton(self.radiobutton_frame, variable=self.v,
+                                text="Audio", value="audio", borderwidth = 10)
+        self.audio.grid(row=0, column=1, sticky = W)
+
+        self.download_button = Button(self.root, text="Download", bg="#F9E79F", 
+                                      padx=5, pady=5,
                         font=("Roboto", 11), command=self.initialize_download)
-        self.download_button.pack(pady=20)
+        self.download_button.pack(pady=10)
 
         """self.btn = RoundedButton(text="Download", radius=30, width=100, height=50,
                             btnbackground="#0078ff", btnforeground="#ffffff")
@@ -32,7 +45,8 @@ class Screen:
 
     def initialize_download(self):
         link = self.url.get()
-        Video(link, "video").download()
+        type = self.v.get()
+        Video(link, type).download()
 
     def execute(self):
         self.root.mainloop()
