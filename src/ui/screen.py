@@ -1,5 +1,4 @@
 from tkinter import *
-from pytube import YouTube
 from src.ui.round_button import RoundButton
 from src.ui.rounded_button import RoundedButton
 from src.main.video import Video
