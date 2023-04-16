@@ -1,2 +1,8 @@
 .idea
 venv
+dist
+build
+src/main/__pycache__
+src/ui/__pycache__
+build.spec
+script.sh

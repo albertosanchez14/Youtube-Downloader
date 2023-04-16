@@ -1,1 +1,3 @@
 pytube~=12.1.3
+pyinstaller~=5.10.1
+moviepy~=1.0.3
